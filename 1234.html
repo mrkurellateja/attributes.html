@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 600px;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        form {
+            text-align: center;
+        }
+        label, input, select, textarea {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left; /* Align text to the left */
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #output {
+            margin-top: 20px;
+            text-align: down;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Application Form</h2>
+        <form id="applicationForm" action="#" method="post">
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="output" class="container" style="display: none;">
+        <h2>Application Summary</h2>
+        <div id="summary"></div>
+    </div>
+
+    <script>
+        document.getElementById("applicationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var fullName = document.getElementById("full_name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var dob = document.getElementById("dob").value;
+            var address = document.getElementById("address").value;
+            var gender = document.getElementById("gender").value;
+            var education = document.getElementById("education").value;
+            var summary = document.getElementById("summary");
+            summary.innerHTML = "<p><strong>Full Name:</strong> " + fullName + "</p>" +
+                                "<p><strong>Email:</strong> " + email + "</p>" +
+                                "<p><strong>Phone Number:</strong> " + phone + "</p>" +
+                                "<p><strong>Date of Birth:</strong> " + dob + "</p>" +
+                                "<p><strong>Address:</strong> " + address + "</p>" +
+                                "<p><strong>Gender:</strong> " + gender + "</p>" +
+                                "<p><strong>Highest Education:</strong> " + education + "</p>";
+            document.getElementById("output").style.display = "block";
+        });
+    </script>
+</body>
+</html>
